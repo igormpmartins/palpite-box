@@ -10,32 +10,23 @@ export default async(req, res) => {
 
         await doc.useServiceAccountAuth(credentials)
         await doc.loadInfo()
-        console.log(doc.title)
 
-        const sheet = doc.sheetsByIndex[2]
-        await sheet.loadCells('A3:B3')
+        const sheet = doc.sheetsByIndex[1]
+        const data = JSON.parse(req.body)
 
-        const possuiPromo = sheet.getCell(2, 0);
-        const textoPromo = sheet.getCell(2, 1);
-
-        res.end(JSON.stringify({
-            showCoupon: possuiPromo.value === 'VERDADEIRO',
-            message: textoPromo.value
-        }))
+        await sheet.addRow({
+            Nome: data.Nome,
+            Email: data.Email,
+            Whatsapp: data.Whatsapp,
+            Cupom: data.Cupom,
+            Promo: data.Promo
+            }
+        )        
+        //console.log(data)
+        res.end(req.body)
 
     } catch (err) {
         res.end('Ocorreu um erro', err)
         console.log(err)
-    }    
-
+    }
 }
-
-
-
-
-
-
-
-
-
-
