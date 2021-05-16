@@ -1,0 +1,12 @@
+.rodape {
+    @apply bg-gray-700 p-4 shadow-md mx-auto text-center;
+}
+.textDev {
+    @apply container mx-auto text-center font-bold text-white;
+}
+.link {
+    @apply hover:underline p-2;
+}
+.imageFooter {
+    @apply inline p-4;
+}
