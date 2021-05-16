@@ -1,7 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const Index = () => {
+
+    const {data, error} = useSWR('/api/get-promo', fetcher)
+    //return (<pre>{JSON.stringify(data)}</pre>)
+
     return (
         <React.Fragment>
             <div className='container font-bold text-center'>
@@ -19,7 +26,12 @@ const Index = () => {
                     </Link>
                 </div>
                 <div className='text-gray-400 my-4 italic mt-12'>
-                    (Texto dinâmico da planilha)
+                    {!data && 
+                    <p>Carregando...</p>
+                    }
+                    {!error && data && data.showCoupon && 
+                        <p>{data.message}</p>
+                    }
                 </div>
             </div>
         </React.Fragment>
