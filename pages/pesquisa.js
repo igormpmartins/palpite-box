@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Link from 'next/link'
 
 const Pesquisa = () => {
 
+    const [form, setForm] = useState({
+        Nome: 'Igor',
+        Email: 'igormpmartins@gmail.com',
+        Whatsapp: '51 99998-4049',
+        Cupom: '123fds1fa',
+        Promo: 'corong4ever'
+    });
+
     const salvar = async() => {
-        const form = {
-            Nome: 'Igor',
-            Email: 'igormpmartins@gmail.com',
-            Whatsapp: '51 99998-4049',
-            Cupom: '123fds1fa',
-            Promo: 'corong4ever'
-        }
+
         const response = await fetch('/api/save', {
             method: 'POST',
             body: JSON.stringify(form)
@@ -18,6 +20,18 @@ const Pesquisa = () => {
 
         const data = await response.json()
         console.log(data)
+
+    }
+
+    const onChange = (event) => {
+
+        const value = event.target.value
+        const key = event.target.name
+
+        setForm(old => ({
+            ...old,
+            [key]: value
+        }))
 
     }
     
@@ -30,13 +44,20 @@ const Pesquisa = () => {
             </p>
             <div className='mx-auto w-1/5 font-bold'>
                 <label>Seu nome:</label>
-                <input type='text' className='block bg-blue-100 rounded shadow-md py-3 px-9 mb-3'></input>
+                <input type='text' className='entrada' placeholder='Nome' name='Nome' onChange={onChange}></input>
             </div>
             <div className='mx-auto w-1/5 font-bold'>
-                <label>Outro input:</label>
-                <input type='text' className='block bg-blue-100 rounded shadow-md py-3 px-9 mb-3'></input>
+                <label>Email:</label>
+                <input type='text' className='entrada' placeholder='Email' name='Email' onChange={onChange}></input>
             </div>
-            <button onClick={salvar} className='mx-auto p-4 block rounded-lg shadow-lg bg-blue-400 my-2 hover:shadow'>Salvar</button>
+            <div className='mx-auto w-1/5 font-bold'>
+                <label>Whatsapp:</label>
+                <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' onChange={onChange}></input>
+            </div>
+            <p>
+            {JSON.stringify(form, null, 2)}
+            </p>
+            <button onClick={salvar} className='botao'>Salvar</button>
         </div>
     )
 
