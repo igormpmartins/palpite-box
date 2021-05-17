@@ -4,11 +4,11 @@ import Link from 'next/link'
 const Pesquisa = () => {
 
     const [form, setForm] = useState({
-        Nome: 'Igor',
-        Email: 'igormpmartins@gmail.com',
-        Whatsapp: '51 99998-4049',
-        Cupom: '123fds1fa',
-        Promo: 'corong4ever'
+        Nome: '',
+        Email: '',
+        Whatsapp: '',
+        Cupom: '',
+        Promo: ''
     });
 
     const salvar = async() => {

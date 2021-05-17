@@ -8,7 +8,7 @@ const doc = new GoogleSpreadsheet(idDoc)
 
 const genCupom = () => {
     const cupom = parseInt(moment().format('YYMMDDHHmmssSSS')).toString(16).toUpperCase()
-    return cupom + '||' + cupom.substr(0, 4) + '-' + cupom.substr(4, 4) + '-' + cupom.substr(8, 4)
+    return cupom.substr(0, 4) + '-' + cupom.substr(4, 4) + '-' + cupom.substr(8, 4)
 
 }
 
