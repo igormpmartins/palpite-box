@@ -47,8 +47,13 @@ export default async(req, res) => {
             Data: moment().format('DD/MM/YYYY HH:mm:ss')
             }
         )        
-        //console.log(data)
-        res.end(req.body)
+
+        res.end(JSON.stringify({
+            showCupon: bolPossuiPromo,
+            Cupom,
+            Promo
+            }
+        ))
 
     } catch (err) {
         res.end('Ocorreu um erro', err)

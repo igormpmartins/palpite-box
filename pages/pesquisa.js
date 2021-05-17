@@ -11,6 +11,9 @@ const Pesquisa = () => {
         Promo: ''
     });
 
+    const [success, setSuccess] = useState(false)
+    const [retorno, setRetorno] = useState({})
+
     const salvar = async() => {
 
         const response = await fetch('/api/save', {
@@ -19,7 +22,11 @@ const Pesquisa = () => {
         })
 
         const data = await response.json()
-        console.log(data)
+        setSuccess(true)
+        setRetorno(data)
+
+        console.log(retorno)
+
 
     }
 
@@ -42,22 +49,45 @@ const Pesquisa = () => {
             O restaurante (Ler da Planilha) sempre busca por atender melhor seus clientes.<br />
             Por isso, estamos sempre abertos a ouvir a sua opinião.
             </p>
-            <div className='mx-auto w-1/5 font-bold'>
-                <label>Seu nome:</label>
-                <input type='text' className='entrada' placeholder='Nome' name='Nome' onChange={onChange}></input>
+            {!success && 
+            <div>
+                <div className='mx-auto w-1/5 font-bold'>
+                    <label>Seu nome:</label>
+                    <input type='text' className='entrada' placeholder='Nome' name='Nome' onChange={onChange}></input>
+                </div>
+                <div className='mx-auto w-1/5 font-bold'>
+                    <label>Email:</label>
+                    <input type='text' className='entrada' placeholder='Email' name='Email' onChange={onChange}></input>
+                </div>
+                <div className='mx-auto w-1/5 font-bold'>
+                    <label>Whatsapp:</label>
+                    <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' onChange={onChange}></input>
+                </div>
+                <button onClick={salvar} className='botao'>Salvar</button>
             </div>
-            <div className='mx-auto w-1/5 font-bold'>
-                <label>Email:</label>
-                <input type='text' className='entrada' placeholder='Email' name='Email' onChange={onChange}></input>
+            }
+            {success && 
+            <div className='text-center w-1/5 mx-auto mb-3'>
+                <p className='mb-3 bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-1 py-3 mb-6'>
+                    Obrigado por contribuir com sua sugestão ou crítica
+                </p>
+                {retorno.showCupon &&
+                    <div className='text-center border p-4 mb-4'>
+                        Seu Cupom: <br />
+                        <span className='font-bold text-2xl'>{retorno.Cupom}</span>
+                    </div>
+                }
+                {retorno.showCupon &&
+                    <div className='text-center border p-4 mb-4'>
+                        <span className='font-bold block mb-2'>{retorno.Promo}</span>
+                        <br/>
+                        <span className='italic'>Tire um print ou foto dessa tela e apresente no estabelecimento.</span>
+                    </div>
+                }
+                
             </div>
-            <div className='mx-auto w-1/5 font-bold'>
-                <label>Whatsapp:</label>
-                <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' onChange={onChange}></input>
-            </div>
-            <p>
-            {JSON.stringify(form, null, 2)}
-            </p>
-            <button onClick={salvar} className='botao'>Salvar</button>
+            }
+            
         </div>
     )
 
