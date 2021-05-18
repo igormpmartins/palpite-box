@@ -68,13 +68,13 @@ const Pesquisa = () => {
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Nota:</label>
                 </div>                    
-                <div className='mx-auto w-1/6'>
+                <div className='w-1/6 mx-auto'>
                     <div className='flex y-6'>
                         <br/>
                         {
                         notas.map(nota=> {
                             return (
-                                <label className='block w-1/6 text-center'>{nota}<br />
+                                <label className='block w-1/6' key={nota} >{nota}<br />
                                 <input type='radio' className='entrada' name='Nota' onChange={onChange} value={nota}/>
                                 </label>
                             )}
