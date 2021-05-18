@@ -8,11 +8,13 @@ const Pesquisa = () => {
         Email: '',
         Whatsapp: '',
         Cupom: '',
-        Promo: ''
+        Promo: '',
+        Nota: 0
     });
 
     const [success, setSuccess] = useState(false)
     const [retorno, setRetorno] = useState({})
+    const notas = [0,1,2,3,4,5]
 
     const salvar = async() => {
 
@@ -62,6 +64,22 @@ const Pesquisa = () => {
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Whatsapp:</label>
                     <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' onChange={onChange}></input>
+                </div>
+                <div className='mx-auto w-1/5 font-bold'>
+                    <label>Nota:</label>
+                </div>                    
+                <div className='mx-auto w-1/6'>
+                    <div className='flex y-6'>
+                        <br/>
+                        {
+                        notas.map(nota=> {
+                            return (
+                                <label className='block w-1/6 text-center'>{nota}<br />
+                                <input type='radio' className='entrada' name='Nota' onChange={onChange} value={nota}/>
+                                </label>
+                            )}
+                        )}
+                    </div>
                 </div>
                 <button onClick={salvar} className='botao'>Salvar</button>
             </div>

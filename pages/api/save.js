@@ -1,5 +1,6 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 import moment from 'moment'
+import { interpolateAs } from 'next/dist/next-server/lib/router/router'
 import credentials from './credentials.json'
 
 
@@ -41,7 +42,7 @@ export default async(req, res) => {
             Nome: data.Nome,
             Email: data.Email,
             Whatsapp: data.Whatsapp,
-            Nota: 5,
+            Nota: parseInt(data.Nota),
             Cupom,
             Promo,
             Data: moment().format('DD/MM/YYYY HH:mm:ss')
