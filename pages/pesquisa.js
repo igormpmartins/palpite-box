@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Link from 'next/link'
+import PageTitle from '/components/PageTitle'
 
 const Pesquisa = () => {
 
@@ -46,6 +46,7 @@ const Pesquisa = () => {
     
     return (
         <div className='pt-6'>
+            <PageTitle title='Pesquisa' />
             <h1 className='font-bold text-center my-4 text-2xl'>Críticas e sugestões</h1>
             <p className='text-center mb-6'>
             O restaurante (Ler da Planilha) sempre busca por atender melhor seus clientes.<br />

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import useSWR from 'swr'
+import PageTitle from '/components/PageTitle'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -10,6 +11,7 @@ const Index = () => {
 
     return (
         <React.Fragment>
+            <PageTitle title='Seja bem-vindo!' />
             <div className='container font-bold text-center'>
                 <div className='font-bold text-center mt-12'>
                     <p>
