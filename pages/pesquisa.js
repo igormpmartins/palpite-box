@@ -18,7 +18,7 @@ const Pesquisa = () => {
     const [tentouEnviar, setTentouEnviar] = useState(false)
 
     const canSave = () => {
-        const result = form.Nome !== '' && form.Ema !== '' &&  form.Nota !== undefined
+        const result = form.Nome !== '' && form.Email !== '' &&  form.Nota !== undefined
         console.log('canSave', result)
         return result
     }
