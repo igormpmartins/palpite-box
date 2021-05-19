@@ -9,16 +9,27 @@ const Pesquisa = () => {
         Whatsapp: '',
         Cupom: '',
         Promo: '',
-        Nota: 0
+        Nota: undefined
     });
 
     const [success, setSuccess] = useState(false)
     const [retorno, setRetorno] = useState({})
     const notas = [0,1,2,3,4,5]
+    const [tentouEnviar, setTentouEnviar] = useState(false)
+
+    const canSave = () => {
+        const result = form.Nome !== '' && form.Ema !== '' &&  form.Nota !== undefined
+        console.log('canSave', result)
+        return result
+    }
 
     const salvar = async() => {
 
-        //TODO: validar campos necessários!
+        setTentouEnviar(true)
+
+        if (!canSave()) {
+            return;
+        }
 
         const response = await fetch('/api/save', {
             method: 'POST',
@@ -60,14 +71,29 @@ const Pesquisa = () => {
                     <label>Seu nome:</label>
                     <input type='text' className='entrada' placeholder='Nome' name='Nome' required onChange={onChange}></input>
                 </div>
+                {tentouEnviar && form.Nome === '' &&
+                    <div className='alerta'>
+                        <p>Informe o Nome</p>
+                    </div>
+                }
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Email:</label>
                     <input type='text' className='entrada' placeholder='Email' name='Email' required onChange={onChange}></input>
                 </div>
+                {tentouEnviar && form.Email === '' &&
+                    <div className='alerta'>
+                        <p>Informe o Email</p>
+                    </div>
+                }                
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Whatsapp:</label>
                     <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' required onChange={onChange}></input>
                 </div>
+                {tentouEnviar && form.Whatsapp === '' &&
+                    <div className='alerta'>
+                        <p>Informe o Whatsapp</p>
+                    </div>
+                }                 
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Nota:</label>
                 </div>                    
@@ -84,6 +110,11 @@ const Pesquisa = () => {
                         )}
                     </div>
                 </div>
+                {tentouEnviar && form.Nota === undefined &&
+                    <div className='alerta'>
+                        <p>Informe o Nota</p>
+                    </div>
+                }                  
                 <button onClick={salvar} className='botao'>Salvar</button>
             </div>
             }
