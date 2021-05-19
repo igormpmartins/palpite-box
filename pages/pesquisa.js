@@ -18,6 +18,8 @@ const Pesquisa = () => {
 
     const salvar = async() => {
 
+        //TODO: validar campos necessários!
+
         const response = await fetch('/api/save', {
             method: 'POST',
             body: JSON.stringify(form)
@@ -56,15 +58,15 @@ const Pesquisa = () => {
             <div>
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Seu nome:</label>
-                    <input type='text' className='entrada' placeholder='Nome' name='Nome' onChange={onChange}></input>
+                    <input type='text' className='entrada' placeholder='Nome' name='Nome' required onChange={onChange}></input>
                 </div>
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Email:</label>
-                    <input type='text' className='entrada' placeholder='Email' name='Email' onChange={onChange}></input>
+                    <input type='text' className='entrada' placeholder='Email' name='Email' required onChange={onChange}></input>
                 </div>
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Whatsapp:</label>
-                    <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' onChange={onChange}></input>
+                    <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' required onChange={onChange}></input>
                 </div>
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Nota:</label>

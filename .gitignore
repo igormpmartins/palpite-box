@@ -74,3 +74,6 @@ typings/
 
 # FuseBox cache
 .fusebox/
+pages/api/credentials.json
+.env.local
+.env.local.example

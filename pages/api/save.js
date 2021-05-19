@@ -1,11 +1,7 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 import moment from 'moment'
-import { interpolateAs } from 'next/dist/next-server/lib/router/router'
-import credentials from './credentials.json'
 
-
-const idDoc = '1GFk3gXl7dO74M8KlWolyTQwy8bjtbNPPDxvDRzqk2Uk'
-const doc = new GoogleSpreadsheet(idDoc)
+const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
 const genCupom = () => {
     const cupom = parseInt(moment().format('YYMMDDHHmmssSSS')).toString(16).toUpperCase()
@@ -17,7 +13,10 @@ export default async(req, res) => {
 
     try {
 
-        await doc.useServiceAccountAuth(credentials)
+        await doc.useServiceAccountAuth({
+            client_email: process.env.SHEET_CLIENT_EMAIL,
+            private_key: process.env.SHEET_PRIVATE_KEY
+        })
         await doc.loadInfo()
 
         const sheet = doc.sheetsByIndex[1]
