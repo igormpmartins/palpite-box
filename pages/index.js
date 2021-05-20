@@ -21,7 +21,7 @@ const Index = () => {
                 </div>
                 <div className='text-center mt-12'>
                     <Link href='/pesquisa'>
-                        <a className='bg-blue-400 px-12 py-6 text-2xl rounded-lg shadow-lg hover:shadow'>
+                        <a className='bg-blue-400 w-80 mx-auto px-12 py-6 text-lg rounded-lg shadow-lg hover:shadow'>
                             Dar a opinião ou sugestão
                         </a>
                     </Link>

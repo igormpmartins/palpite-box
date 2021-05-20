@@ -4,7 +4,7 @@
 }
 
 .botao {
-    @apply mx-auto p-4 block rounded-lg shadow-lg bg-blue-400 my-2 hover:shadow    
+    @apply mx-auto font-bold p-4 block rounded-lg shadow-lg bg-blue-400 my-2 hover:shadow    
 }
 
 .alerta {
