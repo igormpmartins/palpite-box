@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import PageTitle from '/components/PageTitle'
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const Pesquisa = () => {
 
@@ -56,13 +59,15 @@ const Pesquisa = () => {
         }))
 
     }
+
+    const {data, error} = useSWR('/api/get-promo', fetcher)
     
     return (
         <div className='pt-6'>
             <PageTitle title='Pesquisa' />
             <h1 className='font-bold text-center my-4 text-2xl'>Críticas e sugestões</h1>
             <p className='text-center mb-6'>
-            O restaurante (Ler da Planilha) sempre busca por atender melhor seus clientes.<br />
+            {!error && data && data.showCoupon && <span>{data.restaurant}</span>} sempre busca por atender melhor seus clientes.<br />
             Por isso, estamos sempre abertos a ouvir a sua opinião.
             </p>
             {!success && 
