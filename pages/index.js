@@ -7,6 +7,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const Index = () => {
 
+    //TODO: centralizar o código da obtenção do nome!
     const {data, error} = useSWR('/api/get-promo', fetcher)
 
     return (
@@ -14,8 +15,7 @@ const Index = () => {
             <PageTitle title='Seja bem-vindo!' />
             <div className='container font-bold text-center'>
                 <div className='font-bold text-center mt-12'>
-                    <p>
-                    O restaurante (Ler da Planilha) sempre busca por atender melhor seus clientes.<br />
+                    <p>{!error && data && data.showCoupon && <span>{data.restaurant}</span>} sempre busca por atender melhor seus clientes.<br />
                     Por isso, estamos sempre abertos a ouvir a sua opinião.
                     </p>
                 </div>
@@ -31,7 +31,7 @@ const Index = () => {
                     <p>Carregando...</p>
                     }
                     {!error && data && data.showCoupon && 
-                        <p>{data.message}</p>
+                        <p>{data.message} </p>
                     }
                 </div>
             </div>
