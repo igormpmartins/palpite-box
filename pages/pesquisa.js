@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import PageTitle from '/components/PageTitle'
 import useSWR from 'swr'
+import styles from './styles.module.css'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -72,30 +73,30 @@ const Pesquisa = () => {
             </p>
             {!success && 
             <div>
-                <div className='mx-auto w-1/5 font-bold'>
+                <div className='mx-auto w-1/5 font-bold '>
                     <label>Seu nome:</label>
-                    <input type='text' className='entrada' placeholder='Nome' name='Nome' required onChange={onChange}></input>
+                    <input type='text' className={styles.entrada} placeholder='Nome' name='Nome' required onChange={onChange}></input>
                 </div>
                 {tentouEnviar && form.Nome === '' &&
-                    <div className='alerta'>
-                        <p>Informe o Nome</p>
-                    </div>
+                    <div className={styles.alerta}>
+                         <p>Informe o Nome</p>
+                     </div>
                 }
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Email:</label>
-                    <input type='text' className='entrada' placeholder='Email' name='Email' required onChange={onChange}></input>
+                    <input type='text' className={styles.entrada} placeholder='Email' name='Email' required onChange={onChange}></input>
                 </div>
                 {tentouEnviar && form.Email === '' &&
-                    <div className='alerta'>
+                    <div className={styles.alerta}>
                         <p>Informe o Email</p>
                     </div>
                 }                
                 <div className='mx-auto w-1/5 font-bold'>
                     <label>Whatsapp:</label>
-                    <input type='text' className='entrada' placeholder='Whatsapp' name='Whatsapp' required onChange={onChange}></input>
+                    <input type='text' className={styles.entrada} placeholder='Whatsapp' name='Whatsapp' required onChange={onChange}></input>
                 </div>
                 {tentouEnviar && form.Whatsapp === '' &&
-                    <div className='alerta'>
+                    <div className={styles.alerta}>
                         <p>Informe o Whatsapp</p>
                     </div>
                 }                 
@@ -109,18 +110,18 @@ const Pesquisa = () => {
                         notas.map(nota=> {
                             return (
                                 <label className='block w-1/6' key={nota} >{nota}<br />
-                                <input type='radio' className='entrada' name='Nota' onChange={onChange} value={nota}/>
+                                <input type='radio' className={styles.entrada} name='Nota' onChange={onChange} value={nota}/>
                                 </label>
                             )}
                         )}
                     </div>
                 </div>
                 {tentouEnviar && form.Nota === undefined &&
-                    <div className='alerta'>
+                    <div className={styles.alerta} >
                         <p>Informe o Nota</p>
                     </div>
                 }                  
-                <button onClick={salvar} className='botao'>Salvar</button>
+                <button onClick={salvar} className={styles.botao}>Salvar</button>
             </div>
             }
             {success && 
