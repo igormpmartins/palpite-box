@@ -73,7 +73,7 @@ const Pesquisa = () => {
             </p>
             {!success && 
             <div>
-                <div className='mx-auto w-1/5 font-bold '>
+                <div className={styles.divEntrada}>
                     <label>Seu nome:</label>
                     <input type='text' className={styles.entrada} placeholder='Nome' name='Nome' required onChange={onChange}></input>
                 </div>
@@ -82,7 +82,7 @@ const Pesquisa = () => {
                          <p>Informe o Nome</p>
                      </div>
                 }
-                <div className='mx-auto w-1/5 font-bold'>
+                <div className={styles.divEntrada}>
                     <label>Email:</label>
                     <input type='text' className={styles.entrada} placeholder='Email' name='Email' required onChange={onChange}></input>
                 </div>
@@ -91,7 +91,7 @@ const Pesquisa = () => {
                         <p>Informe o Email</p>
                     </div>
                 }                
-                <div className='mx-auto w-1/5 font-bold'>
+                <div className={styles.divEntrada}>
                     <label>Whatsapp:</label>
                     <input type='text' className={styles.entrada} placeholder='Whatsapp' name='Whatsapp' required onChange={onChange}></input>
                 </div>
@@ -100,7 +100,7 @@ const Pesquisa = () => {
                         <p>Informe o Whatsapp</p>
                     </div>
                 }                 
-                <div className='mx-auto w-1/5 font-bold'>
+                <div className={styles.divEntrada}>
                     <label>Nota:</label>
                 </div>                    
                 <div className='w-1/6 mx-auto'>
