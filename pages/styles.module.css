@@ -7,6 +7,10 @@
     @apply block p-4 shadow bg-blue-100 py-3 px-7 my-2 rounded
 }
 
+.radioEntrada {
+    @apply block p-10 shadow bg-blue-100 py-3 px-8 my-2 rounded
+}
+
 .botao {
     @apply mx-auto font-bold p-4 block rounded-lg shadow-lg bg-blue-400 my-2 hover:shadow    
 }
