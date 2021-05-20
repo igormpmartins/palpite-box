@@ -68,6 +68,9 @@ const Pesquisa = () => {
             <PageTitle title='Pesquisa' />
             <h1 className='font-bold text-center my-4 text-2xl'>Críticas e sugestões</h1>
             <p className='text-center mb-6'>
+            {!data && 
+            <p>Carregando...</p>
+            }
             {!error && data && data.showCoupon && <span>{data.restaurant}</span>} sempre busca por atender melhor seus clientes.<br />
             Por isso, estamos sempre abertos a ouvir a sua opinião.
             </p>

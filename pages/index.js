@@ -15,9 +15,14 @@ const Index = () => {
             <PageTitle title='Seja bem-vindo!' />
             <div className='container font-bold text-center'>
                 <div className='font-bold text-center mt-12'>
-                    <p>{!error && data && data.showCoupon && <span>{data.restaurant}</span>} sempre busca por atender melhor seus clientes.<br />
-                    Por isso, estamos sempre abertos a ouvir a sua opinião.
-                    </p>
+                {!data && 
+                <p>Carregando...</p>
+                }
+                {!error && data && data.showCoupon && 
+                 <p> <span>{data.restaurant}</span> sempre busca por atender melhor seus clientes.<br />
+                 Por isso, estamos sempre abertos a ouvir a sua opinião.
+                 </p>
+                 }
                 </div>
                 <div className='text-center mt-12'>
                     <Link href='/pesquisa'>
