@@ -71,8 +71,11 @@ const Pesquisa = () => {
             {!data && 
             <p>Carregando...</p>
             }
-            {!error && data && data.showCoupon && <span>{data.restaurant}</span>} sempre busca por atender melhor seus clientes.<br />
-            Por isso, estamos sempre abertos a ouvir a sua opinião.
+            {!error && data && data.showCoupon && 
+                 <p> <span>{data.restaurant}</span> sempre busca por atender melhor seus clientes.<br />
+                 Por isso, estamos sempre abertos a ouvir a sua opinião.
+                 </p>
+            }
             </p>
             {!success && 
             <div>
