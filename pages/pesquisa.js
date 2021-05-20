@@ -131,7 +131,7 @@ const Pesquisa = () => {
             </div>
             }
             {success && 
-            <div className='text-center w-1/5 mx-auto mb-3'>
+            <div className='text-center w-80 mx-auto mb-3'>
                 <p className='mb-3 bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-1 py-3 mb-6'>
                     Obrigado por contribuir com sua sugestão ou crítica
                 </p>
